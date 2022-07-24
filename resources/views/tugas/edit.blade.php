@@ -7,7 +7,7 @@
                 @include('layouts/_flash')
                 <div class="card">
                     <div class="card-header">
-                        Data Siswa
+                        Data siswa
                     </div>
                     <div class="card-body">
                         <form action="{{ route('tugas.update', $tugas->id) }}" method="post">
