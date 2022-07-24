@@ -22,7 +22,7 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Sign in to start your </p>
 
       <form action="{{route('login')}}" method="post">
         @csrf
@@ -37,7 +37,7 @@
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
-            @enderror
+          @enderror
         </div>
         <div class="input-group mb-3">
           <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
