@@ -19,7 +19,7 @@ use App\Http\controllers\JurusanController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//templating
 Route::get('/hello', function () {
     return view('hello');
 });

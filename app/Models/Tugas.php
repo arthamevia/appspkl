@@ -9,6 +9,7 @@ class Tugas extends Model
 {
     use HasFactory;
     //field apa saja yang bisa diisi
+    
     public $fillable = ['nis', 'nama', 'alamat', 'tgl_lahir'];
     //membuat fitur created_at(kapan data dibuat) & updated_at(kapan data diedit)
     //aktif
