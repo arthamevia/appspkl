@@ -5,6 +5,7 @@ use App\Http\controllers\TugasController;
 use App\Http\controllers\NilaiController;
 use App\Http\controllers\JurusanController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,5 +32,4 @@ Route::resource('jurusan', JurusanController::class);
 Route::get('/test-admin', function(){
     return view('layouts.admin');
 });
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
