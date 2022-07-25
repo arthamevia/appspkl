@@ -83,9 +83,12 @@ class WaliController extends Controller
      * @param  \App\Models\wali  $wali
      * @return \Illuminate\Http\Response
      */
-    public function edit(wali $wali)
+    public function edit($id)
     {
         //
+        $wali = Wali::findOrFail($id);
+        $tugas = Tugas::all();
+        return view('wali.edit', compact('wali', 'tugas'));
     }
 
     /**
@@ -95,9 +98,28 @@ class WaliController extends Controller
      * @param  \App\Models\wali  $wali
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, wali $wali)
+    public function update(Request $request, $id)
     {
         //
+        $validated = $request->validate([
+            'nama' => 'required',
+            'id_siswa' => 'required',
+            'foto' => 'image|max:2048',
+        ]);
+
+        $wali = Wali::findOrFail($id);
+        $wali->nama = $request->nama;
+        if ($request->hasFile('foto')) {
+            $wali->deleteImage(); //menghapus foto sebelum di update melalui method deleteImage di model
+            $image = $request->file('foto');
+            $name = rand(1000, 9999) . $image->getClientOriginalName();
+            $image->move('images/wali/', $name);
+            $wali->foto = $name;
+        }
+        $wali->id_siswa = $request->id_siswa;
+        $wali->save();
+        return redirect()->route('wali.index')
+            ->with('success', 'Data berhasil dibuat!');
     }
 
     /**
@@ -106,8 +128,14 @@ class WaliController extends Controller
      * @param  \App\Models\wali  $wali
      * @return \Illuminate\Http\Response
      */
-    public function destroy(wali $wali)
+    public function destroy($id)
     {
         //
+        $wali = Wali::findOrFail($id);
+        $wali->deleteImage();
+        $wali->delete();
+        return redirect()->route('wali.index')
+            ->with('success', 'Data berhasil dibuat!');
+
     }
 }
