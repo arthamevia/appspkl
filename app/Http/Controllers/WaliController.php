@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\wali;
+use App\Models\Tugas;
 use Illuminate\Http\Request;
 
 class WaliController extends Controller

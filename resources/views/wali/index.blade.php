@@ -28,7 +28,7 @@
                                             <img src="{{ $data->image() }}" style="width: 100px; height:100px;"
                                                 alt="">
                                         </td>
-                                        <td>{{ $data->siswa->nama }}</td>
+                                        <td>{{ $data->tugas->nama }}</td>
                                         <td>
                                             <form action="{{ route('wali.destroy', $data->id) }}" method="post">
                                                 @csrf
